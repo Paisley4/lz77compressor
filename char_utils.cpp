@@ -106,7 +106,7 @@ bool char_utils::contain_word(const char *tab, __int64 lookahead_buf, __int64 be
 
 void char_utils::copy_array(char *tab, __int64 tab_size, __int64 lookahead_buf, __int64 begin, __int64 n) {
 
-    std::cout << begin << " " << n << std::endl;
+    //std::cout << begin << " " << n << std::endl;
 
     for(__int64 i = 0; i < n; i++){
         tab[tab_size - lookahead_buf + i] = tab[begin + i];

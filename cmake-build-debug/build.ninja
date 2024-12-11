@@ -85,6 +85,18 @@ build CMakeFiles/lz77compressor.dir/lz77_word.cpp.obj: CXX_COMPILER__lz77compres
   OBJECT_DIR = CMakeFiles\lz77compressor.dir
   OBJECT_FILE_DIR = CMakeFiles\lz77compressor.dir
 
+build CMakeFiles/lz77compressor.dir/file_utils.cpp.obj: CXX_COMPILER__lz77compressor_unscanned_Debug C$:/Users/Krzysztof/CLionProjects/lz77compressor/file_utils.cpp || cmake_object_order_depends_target_lz77compressor
+  DEP_FILE = CMakeFiles\lz77compressor.dir\file_utils.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\lz77compressor.dir
+  OBJECT_FILE_DIR = CMakeFiles\lz77compressor.dir
+
+build CMakeFiles/lz77compressor.dir/logger.cpp.obj: CXX_COMPILER__lz77compressor_unscanned_Debug C$:/Users/Krzysztof/CLionProjects/lz77compressor/logger.cpp || cmake_object_order_depends_target_lz77compressor
+  DEP_FILE = CMakeFiles\lz77compressor.dir\logger.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\lz77compressor.dir
+  OBJECT_FILE_DIR = CMakeFiles\lz77compressor.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target lz77compressor
@@ -93,8 +105,9 @@ build CMakeFiles/lz77compressor.dir/lz77_word.cpp.obj: CXX_COMPILER__lz77compres
 #############################################
 # Link the executable lz77compressor.exe
 
-build lz77compressor.exe: CXX_EXECUTABLE_LINKER__lz77compressor_Debug CMakeFiles/lz77compressor.dir/main.cpp.obj CMakeFiles/lz77compressor.dir/lz77.cpp.obj CMakeFiles/lz77compressor.dir/testing.cpp.obj CMakeFiles/lz77compressor.dir/string_utils.cpp.obj CMakeFiles/lz77compressor.dir/char_utils.cpp.obj CMakeFiles/lz77compressor.dir/lz77_word.cpp.obj
+build lz77compressor.exe: CXX_EXECUTABLE_LINKER__lz77compressor_Debug CMakeFiles/lz77compressor.dir/main.cpp.obj CMakeFiles/lz77compressor.dir/lz77.cpp.obj CMakeFiles/lz77compressor.dir/testing.cpp.obj CMakeFiles/lz77compressor.dir/string_utils.cpp.obj CMakeFiles/lz77compressor.dir/char_utils.cpp.obj CMakeFiles/lz77compressor.dir/lz77_word.cpp.obj CMakeFiles/lz77compressor.dir/file_utils.cpp.obj CMakeFiles/lz77compressor.dir/logger.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lz77compressor.dir
   POST_BUILD = cd .

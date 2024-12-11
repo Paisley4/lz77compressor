@@ -98,13 +98,13 @@ std::string lz77::decompress(lz77_word *tab, __int64 tab_size, __int64 lookahead
     for(__int64 i = 0; i < window_size - lookahead_buf; i++)
         window[i + lookahead_buf] = ' ';
 
-    testing::printTab(window, window_size, lookahead_buf);
+    //testing::printTab(window, window_size, lookahead_buf);
 
     for(__int64 i = 0; i < tab_size; i++){
         window_position += tab[i].C;
         char_utils::copy_array(window, window_size, lookahead_buf, tab[i].P, tab[i].C);
         window[window_position] = tab[i].S;
-        testing::printTab(window, window_size, lookahead_buf);
+        //testing::printTab(window, window_size, lookahead_buf);
         for(__int64 d = 0; d < tab[i].C + 1; d++){
             result += (char) window[d + lookahead_buf];
         }
