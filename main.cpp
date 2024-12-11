@@ -1,53 +1,15 @@
 #include <iostream>
 #include "lz77.h"
 
-#include "testing.h"
 #include "char_utils.h"
 #include "file_utils.h"
 #include "logger.h"
+#include "testing.h"
 
+// Mode in which application will work.
 enum mode{COMPRESS, DECOMPRESS, UNDEFINED};
 
 int main(int argc, char *argv[]) {
-
-    //std::cout << lz77::compress("")
-
-    //std::string testString = testing::generateRandomString(4000);
-    //std::string testString = "Miałem robić mapę wczoraj, nie chciało mi się bo sił nie miałem karnąłem się na 193 i tyle, a dziś chciałem i znów plany się pokrzyżowały XD";
-
-    //std::cout << testString << std::endl << std::endl;
-
-    //std::string result = lz77::compress(testString, 256, 256);
-
-    //testing::writeToFile(result, "compressed.txt");
-
-    /*char *tab = {"cdabecdxyz"};
-
-    lz77_word word{};
-    for(int i = 9; i > 5; i--){
-        if(char_utils::contain_word(tab, 5, 5, i, word)){
-            std::cout << "(" << word.P + 1 << "," << word.C << "," << (int) word.S << ")" << std::endl;
-        }
-
-    }*/
-
-    /*std::string test = "abcdefghijklnbhdoeps";
-    char *tab;
-    __int64 tab_size = testing::copyStringToTab(tab, test);
-    __int64 lookahead_buf = tab_size/2;
-
-    char_utils::copy_array(tab, tab_size, lookahead_buf, 4, 3);
-
-    testing::printTab(tab, tab_size);*/
-
-    /*lz77_word *tab;
-    __int64 tab_size = testing::readWords(tab, "compressed.txt");
-
-    std::string s;
-
-    s = lz77::decompress(tab, tab_size, 256, 256);
-
-    testing::writeToFile(s, "decompressed.txt");*/
 
     // For logging purpose.
     std::string info;
@@ -57,6 +19,7 @@ int main(int argc, char *argv[]) {
     std::string input_filename, output_filename;
     __int64 lookahead_buffer_size, search_buffer_size;
 
+    // If there is no arg, printing instruction.
     if(argc <= 1){
         std::cout << "Parameters for lz77compressor: " << std::endl;
         std::cout << "    -i  -  Input file name." << std::endl;
@@ -67,6 +30,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    // Iterating on every arg.
     for(int i = 1; i < argc; i++){
         if(argv[i] == (std::string) "-i"){
             i++;
@@ -126,7 +90,7 @@ int main(int argc, char *argv[]) {
                 logger::info(info);
                 break;
             }
-            lookahead_buffer_size = (__int64) argv[i];
+            lookahead_buffer_size = strtoll(argv[i], nullptr, 10);
             continue;
         }
         if(argv[i] == (std::string) "-k"){
@@ -138,7 +102,7 @@ int main(int argc, char *argv[]) {
                 logger::info(info);
                 break;
             }
-            search_buffer_size = (__int64) argv[i];
+            search_buffer_size = strtoll(argv[i], nullptr, 10);
             continue;
         }
         info = "Unknown parameter \"";
@@ -171,6 +135,32 @@ int main(int argc, char *argv[]) {
         logger::info("Size of search buffer is too small. (should be > 0)");
         return 0;
     }
+
+
+    // Checking if input file exists.
+    std::ifstream input_file(input_filename);
+    if(!input_file.good()){
+        info = "File \"";
+        info += input_filename;
+        info += "\" doesn't exist.";
+        logger::info(info);
+        return 0;
+    }
+    input_file.close();
+
+    // Compressing file.
+    if(app_mode == mode::COMPRESS){
+        std::string input_text = file_utils::readStringFromFile(input_filename);
+        std::string output_text = lz77::compress(input_text, lookahead_buffer_size, search_buffer_size);
+        file_utils::writeToFile(output_text, output_filename);
+        return 0;
+    }
+
+    // Decompressing file.
+    lz77_word *tab{};
+    __int64 word_tab_size = file_utils::readCompressedWordsFromFile(tab, input_filename);
+    std::string output_text = lz77::decompress(tab, word_tab_size, lookahead_buffer_size, search_buffer_size);
+    file_utils::writeToFile(output_text, output_filename);
 
     return 0;
 }

@@ -4,7 +4,7 @@
 
 #include "char_utils.h"
 
-void char_utils::slide_array(char *tab, __int64 tab_size, std::string input, __int64 &position) {
+void char_utils::slide_array(char *tab, const __int64 &tab_size, std::string input, __int64 &position) {
 
     for(__int64 i = 1; i < tab_size; i++){
         tab[i - 1] = tab[i];
@@ -20,7 +20,7 @@ void char_utils::slide_array(char *tab, __int64 tab_size, std::string input, __i
 
 }
 
-void char_utils::slide_array(char *tab, __int64 tab_size, const std::string& input, __int64 &position, __int64 n) {
+void char_utils::slide_array(char *tab, const __int64 &tab_size, const std::string& input, __int64 &position, const __int64 &n) {
 
     for(__int64 c = 0; c < n; c++){
         char_utils::slide_array(tab, tab_size, input, position);
@@ -28,7 +28,7 @@ void char_utils::slide_array(char *tab, __int64 tab_size, const std::string& inp
 
 }
 
-void char_utils::slide_array(char *tab, __int64 tab_size) {
+void char_utils::slide_array(char *tab, const __int64 &tab_size) {
 
     for(__int64 i = 1; i < tab_size; i++){
         tab[i - 1] = tab[i];
@@ -38,7 +38,7 @@ void char_utils::slide_array(char *tab, __int64 tab_size) {
 
 }
 
-void char_utils::slide_array(char *tab, __int64 tab_size, __int64 n) {
+void char_utils::slide_array(char *tab, const __int64 &tab_size, const __int64 &n) {
 
     for(__int64 c = 0; c < n; c++){
         char_utils::slide_array(tab, tab_size);
@@ -46,7 +46,7 @@ void char_utils::slide_array(char *tab, __int64 tab_size, __int64 n) {
 
 }
 
-lz77_word char_utils::find_longest_string(char *tab, __int64 tab_size, __int64 lookahead_buf, __int64 search_buf) {
+lz77_word char_utils::find_longest_string(char *tab, const __int64 &lookahead_buf, const __int64 &search_buf) {
 
     lz77_word lz77Word{0, 0, tab[lookahead_buf+1]};
 
@@ -67,27 +67,23 @@ lz77_word char_utils::find_longest_string(char *tab, __int64 tab_size, __int64 l
 }
 
 // Checks if string contains specified substring.
-bool char_utils::contain_word(const char *tab, __int64 lookahead_buf, __int64 begin, __int64 end, lz77_word &word) {
-
-    //std::cout << "NOWA" << std::endl;
+bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word) {
 
     for(__int64 lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
 
+        // If word's length is bigger than searching place, we cannot find word.
         if(lookahead_buf - lookahead_index < end - begin + 1)
             return false;
 
         bool isOk = true;
 
+        // Searching specified word.
         for(__int64 search_index = 0; search_index < end - begin + 1; search_index++){
 
+            // Two characters doesn't match.
             if(tab[search_index + lookahead_index] != tab[search_index + begin]){
-
-                //std::cout << "Break " << tab[search_index + lookahead_index] << " =/= " << tab[search_index + begin] << std::endl;
-
                 isOk = false;
                 break;
-            }else{
-                //std::cout << "Git " << tab[search_index + lookahead_index] << " == " << tab[search_index + begin] << std::endl;
             }
 
         }
@@ -104,9 +100,7 @@ bool char_utils::contain_word(const char *tab, __int64 lookahead_buf, __int64 be
 
 }
 
-void char_utils::copy_array(char *tab, __int64 tab_size, __int64 lookahead_buf, __int64 begin, __int64 n) {
-
-    //std::cout << begin << " " << n << std::endl;
+void char_utils::copy_array(char *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &n) {
 
     for(__int64 i = 0; i < n; i++){
         tab[tab_size - lookahead_buf + i] = tab[begin + i];

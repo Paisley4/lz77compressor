@@ -12,13 +12,13 @@
 class char_utils {
 
 public:
-    static void slide_array(char *tab, __int64 tab_size, std::string input, __int64 &position);
-    static void slide_array(char *tab, __int64 tab_size, const std::string& input, __int64 &position, __int64 n);
-    static void slide_array(char *tab, __int64 tab_size);
-    static void slide_array(char *tab, __int64 tab_size, __int64 n);
-    static lz77_word find_longest_string(char *tab, __int64 tab_size, __int64 lookahead_buf, __int64 search_buf);
-    static bool contain_word(const char *tab, __int64 lookahead_buf, __int64 begin, __int64 end, lz77_word &word);
-    static void copy_array(char *tab, __int64 tab_size, __int64 lookahead_buf, __int64 begin, __int64 n);
+    static void slide_array(char *tab, const __int64 &tab_size, std::string input, __int64 &position);
+    static void slide_array(char *tab, const __int64 &tab_size, const std::string& input, __int64 &position, const __int64 &n);
+    static void slide_array(char *tab, const __int64 &tab_size);
+    static void slide_array(char *tab, const __int64 &tab_size, const __int64 &n);
+    static lz77_word find_longest_string(char *tab, const __int64 &lookahead_buf, const __int64 &search_buf);
+    static bool contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word);
+    static void copy_array(char *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &n);
 
 };
 

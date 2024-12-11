@@ -12,8 +12,8 @@
 class lz77 {
 
 public:
-    static std::string compress(std::string input, __int64 lookahead_buf, __int64 search_buf);
-    static std::string decompress(lz77_word *tab, __int64 tab_size, __int64 lookahead_buf, __int64 output_buf);
+    static std::string compress(std::string &input, const __int64 &lookahead_buf, const __int64 &search_buf);
+    static std::string decompress(const lz77_word *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &output_buf);
 
 };
 

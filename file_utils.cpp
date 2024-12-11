@@ -12,6 +12,8 @@ std::string file_utils::readStringFromFile(const std::string &filename) {
     std::stringstream buffer;
     buffer << file.rdbuf();
 
+    file.close();
+
     return buffer.str();
 }
 
@@ -25,6 +27,46 @@ std::vector<std::string> file_utils::readStringsFromFile(const std::string &file
     while (std::getline(file, line))
         result.push_back(line);
 
+    file.close();
+
     return result;
+}
+
+__int64 file_utils::readCompressedWordsFromFile(lz77_word*& tab, const std::string &filename){
+    std::vector<std::string> lines = file_utils::readStringsFromFile(filename);
+
+    std::vector<lz77_word> words;
+
+    lz77_word word{};
+
+    int P, C, S;
+
+    // Take every line and split it into P, C and S.
+    for(const std::string& line : lines){
+        std::istringstream iss(line);
+        if(iss >> P >> C >> S){
+            word.P = P;
+            word.C = C;
+            word.S = char(S);
+            words.push_back(word);
+        }
+    }
+
+    tab = new lz77_word[words.size()];
+
+    for(__int64 i = 0; i < words.size(); i++){
+        tab[i] = words[i];
+    }
+
+    return (__int64) words.size();
+}
+
+void file_utils::writeToFile(std::string& text, const std::string& filename){
+    std::fstream file;
+    file.open(filename, std::ios::app);
+
+    file << text;
+
+    file.close();
 }
 
