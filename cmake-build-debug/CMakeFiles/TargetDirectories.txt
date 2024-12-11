@@ -1,0 +1,3 @@
+C:/Users/Krzysztof/CLionProjects/lz77compressor/cmake-build-debug/CMakeFiles/lz77compressor.dir
+C:/Users/Krzysztof/CLionProjects/lz77compressor/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Krzysztof/CLionProjects/lz77compressor/cmake-build-debug/CMakeFiles/rebuild_cache.dir

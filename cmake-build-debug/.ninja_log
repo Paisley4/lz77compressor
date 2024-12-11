@@ -1,0 +1,10 @@
+# ninja log v6
+13	1855	7556299991788319	CMakeFiles/lz77compressor.dir/main.cpp.obj	cbba8ddeb65109db
+75	2862	7556299992416631	CMakeFiles/lz77compressor.dir/testing.cpp.obj	5041da4edde03bab
+65	1823	7556299992316896	CMakeFiles/lz77compressor.dir/lz77.cpp.obj	d7baa8da87de54a3
+2862	3166	7556300020282434	lz77compressor.exe	b14c4a33bf81a9e2
+70	1274	7556297532625606	CMakeFiles/lz77compressor.dir/char_utils.cpp.obj	864825bb053209a8
+1425	2198	7539198094446419	CMakeFiles/lz77compressor.dir/string_utils.cpp.obj	4f1fe58859d6dff3
+1377	2430	7543561444176303	CMakeFiles/lz77compressor.dir/lz77_word.cpp.obj	aea1855590d1a8b1
+12	1340	7556302002414423	CMakeFiles/lz77compressor.dir/main.cpp.obj	cbba8ddeb65109db
+1341	1646	7556302015698638	lz77compressor.exe	b14c4a33bf81a9e2
