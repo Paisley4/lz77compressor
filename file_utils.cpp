@@ -17,6 +17,22 @@ std::string file_utils::readStringFromFile(const std::string &filename) {
     return buffer.str();
 }
 
+void file_utils::readBytesFromFile(const std::string &filename, char*& tab, __int64& tab_size){
+    std::ifstream file(filename, std::ios::ios_base::in | std::ios::ios_base::binary);
+
+    file.seekg(0, std::ios::end);
+    tab_size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    tab = new char[tab_size];
+
+    file.read(tab, tab_size);
+
+    std::vector<char> test;
+
+    file.close();
+}
+
 std::vector<std::string> file_utils::readStringsFromFile(const std::string &filename) {
     std::ifstream file(filename);
 
@@ -62,10 +78,19 @@ __int64 file_utils::readCompressedWordsFromFile(lz77_word*& tab, const std::stri
 }
 
 void file_utils::writeToFile(std::string& text, const std::string& filename){
-    std::fstream file;
+    std::ofstream file;
     file.open(filename, std::ios::app);
 
     file << text;
+
+    file.close();
+}
+
+void file_utils::writeBytesToFile(const std::string &filename, char *&tab, __int64 &tab_size) {
+    std::fstream file;
+    file.open(filename, std::ios::ios_base::binary | std::ios::ios_base::out);
+
+    file.write(tab, tab_size);
 
     file.close();
 }

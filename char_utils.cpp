@@ -67,7 +67,7 @@ lz77_word char_utils::find_longest_string(char *tab, const __int64 &lookahead_bu
 }
 
 // Checks if string contains specified substring.
-bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word) {
+/*bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word) {
 
     for(__int64 lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
 
@@ -98,12 +98,49 @@ bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, con
 
     return false;
 
+}*/
+
+// KMP algorithm
+bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word) {
+
+    // Creating prefix array.
+    std::vector<__int64> pref;
+    __int64 j = 0;
+    __int64 m = end - begin + 1;
+    pref.resize(m, 0);
+    for(__int64 k = 1; k < m; k++){
+        while (j > 0 && tab[begin + j] != tab[begin + k])
+            j = pref[j - 1];
+
+        if(tab[begin + j] == tab[begin + k])
+            j++;
+
+        pref[k] = j;
+    }
+
+    j = 0;
+    for(__int64 i = 0; i < lookahead_buf; i++){
+        while(j > 0 && tab[begin + j] != tab[i])
+            j = pref[j - 1];
+
+        if(tab[begin + j] == tab[i])
+            j++;
+
+        if(j == m){
+            word.P = i - m + 1;
+            word.C = end - begin + 1;
+            return true;
+        }
+    }
+
+    return false;
+
 }
 
 void char_utils::copy_array(char *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &n) {
 
     for(__int64 i = 0; i < n; i++){
-        tab[tab_size - lookahead_buf + i] = tab[begin + i];
+        tab[lookahead_buf + i] = tab[begin + i];
     }
 
 }

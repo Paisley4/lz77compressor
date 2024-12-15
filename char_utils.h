@@ -6,6 +6,7 @@
 #define LZ77COMPRESSOR_CHAR_UTILS_H
 
 #include <iostream>
+#include <vector>
 
 #include "lz77_word.h"
 

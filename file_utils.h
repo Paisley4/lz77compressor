@@ -14,9 +14,11 @@
 class file_utils {
 public:
     static std::string readStringFromFile(const std::string &filename);
+    static void readBytesFromFile(const std::string &filename, char*& tab, __int64& tab_size);
     static std::vector<std::string> readStringsFromFile(const std::string &filename);
     static __int64 readCompressedWordsFromFile(lz77_word*& tab, const std::string &filename);
     static void writeToFile(std::string& text, const std::string& filename);
+    static void writeBytesToFile(const std::string &filename, char* &tab, __int64& tab_size);
 };
 
 

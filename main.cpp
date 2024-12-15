@@ -11,6 +11,41 @@ enum mode{COMPRESS, DECOMPRESS, UNDEFINED};
 
 int main(int argc, char *argv[]) {
 
+    /*{
+        char* testTab;
+        __int64 testTab_size;
+        file_utils::readBytesFromFile("reto.jpg", testTab, testTab_size);
+        //std::cout << testTab_size * 8;
+
+        testing::printTab(testTab, testTab_size);
+
+        //std::string testString = std::string(testTab);
+
+        std::string outputTestString = lz77::compressForBytes(testTab, testTab_size, 15, 15);
+        file_utils::writeToFile(outputTestString, "reto.compress");
+
+        delete []testTab;
+    }*/
+
+    /*{
+        lz77_word* tab;
+        __int64 tab_size = file_utils::readCompressedWordsFromFile(tab, "reto.compress");
+        std::vector<char> decompressedMp3 = lz77::decompressForBytes(tab, tab_size, 512, 128);
+        char* tab_c = new char[decompressedMp3.size()];
+
+        for(__int64 i = 0; i < decompressedMp3.size(); i++)
+            tab_c[i] = decompressedMp3[i];
+
+        __int64 ss = (__int64) decompressedMp3.size();
+        //std::cout << tab_c[ss - 1];
+
+        file_utils::writeBytesToFile("reto2.jpg", tab_c, ss);
+
+        delete []tab_c;
+    }*/
+
+    std::cout << std::endl << std::endl;
+
     // For logging purpose.
     std::string info;
 
@@ -150,17 +185,25 @@ int main(int argc, char *argv[]) {
 
     // Compressing file.
     if(app_mode == mode::COMPRESS){
+        logger::info("Starting compression.");
+
         std::string input_text = file_utils::readStringFromFile(input_filename);
         std::string output_text = lz77::compress(input_text, lookahead_buffer_size, search_buffer_size);
         file_utils::writeToFile(output_text, output_filename);
+
+        logger::info("Successfully compressed!");
         return 0;
     }
 
     // Decompressing file.
+    logger::info("Starting decompression.");
+
     lz77_word *tab{};
     __int64 word_tab_size = file_utils::readCompressedWordsFromFile(tab, input_filename);
     std::string output_text = lz77::decompress(tab, word_tab_size, lookahead_buffer_size, search_buffer_size);
     file_utils::writeToFile(output_text, output_filename);
+
+    logger::info("Successfully decompressed!");
 
     return 0;
 }
