@@ -13,12 +13,12 @@
 class lz77 {
 
 public:
-    static std::string compress(std::string &input, const __int64 &lookahead_buf, const __int64 &search_buf);
+    //static std::string compress(std::string &input, const __int64 &lookahead_buf, const __int64 &search_buf);
     // Test for bytes
-    static std::string compressForBytes(char* &input, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &search_buf);
-    static std::string decompress(const lz77_word *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &output_buf);
+    static std::vector<lz77_word> compressForBytes(char* &input, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &search_buf);
+    //static std::string decompress(const lz77_word *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &output_buf);
     // Also test for bytes
-    static std::vector<char> decompressForBytes(const lz77_word *tab, const __int64 &tab_size, const __int64 &lookahead_buf, const __int64 &output_buf);
+    static std::vector<char> decompressForBytes(const std::vector<lz77_word> &tab, const __int64 &lookahead_buf, const __int64 &output_buf);
 
 };
 

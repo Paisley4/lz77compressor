@@ -76,6 +76,19 @@ public:
         return words.size();
 
     }
+    static void printVec(std::vector<char> vec){
+        for(const char c : vec)
+            std::cout << c << " ";
+        std::cout << std::endl;
+    }
+    static void printVec(std::vector<char> vec, __int64 split){
+        for(__int64 i = 0; i < vec.size(); i++){
+            if(i == split)
+                std::cout << "| ";
+            std::cout << vec[i] << " ";
+        }
+        std::cout << std::endl;
+    }
 };
 
 

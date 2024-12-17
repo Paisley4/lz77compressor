@@ -44,6 +44,58 @@ int main(int argc, char *argv[]) {
         delete []tab_c;
     }*/
 
+    /*{
+        std::fstream file("test.byt", std::ios::binary | std::ios::out);
+
+        __int64 a = 127, b = 18;
+        int c = 3;
+        char *t = new char[8];
+        memcpy(t, &a, 8);
+        file.write(t, 8);
+        memcpy(t, &b, 8);
+        file.write(t, 8);
+        memcpy(t, &c, 4);
+        file.write(t, 4);
+
+        file.close();
+
+        delete []t;
+    }*/
+
+    /*{
+        lz77_word a{128, 17, 'a'};
+        lz77_word b{36247, 13482, 'h'};
+
+        std::vector<lz77_word> vec{a, b};
+
+        file_utils::writeCompressedByteWordsToFile("test.byt", vec);
+
+    }*/
+
+    /*{
+
+        std::vector<lz77_word> vec = file_utils::readCompressedByteWordsFromFile("test.byt");
+
+        for(const lz77_word word : vec)
+            std::cout << word.P << " " << word.C << " " << word.S << std::endl;
+
+    }*/
+
+    /*{
+        char *tab;
+        __int64 tab_size;
+        file_utils::readBytesFromFile("testy.txt", tab, tab_size);
+
+        std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, 15, 15);
+        file_utils::writeCompressedByteWordsToFile("reto.compress", words);
+    }*/
+
+    /*{
+        std::vector<lz77_word> words = file_utils::readCompressedByteWordsFromFile("reto.compress");
+        std::vector<char> data = lz77::decompressForBytes(words, 15, 15);
+        file_utils::writeBytesToFile("l.txt", data);
+    }*/
+
     std::cout << std::endl << std::endl;
 
     // For logging purpose.
@@ -187,9 +239,18 @@ int main(int argc, char *argv[]) {
     if(app_mode == mode::COMPRESS){
         logger::info("Starting compression.");
 
-        std::string input_text = file_utils::readStringFromFile(input_filename);
-        std::string output_text = lz77::compress(input_text, lookahead_buffer_size, search_buffer_size);
-        file_utils::writeToFile(output_text, output_filename);
+        char *tab;
+        __int64 tab_size;
+        file_utils::readBytesFromFile(input_filename, tab, tab_size);
+        //std::cout << "LA: " << lookahead_buffer_size << std::endl;
+        std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
+
+        std::cout << "Wypisanie: " << std::endl;
+        for(lz77_word w : words){
+            std::cout << w.P << " " << w.C << " " << w.S << std::endl;
+        }
+
+        file_utils::writeCompressedByteWordsToFile(output_filename, words);
 
         logger::info("Successfully compressed!");
         return 0;
@@ -198,10 +259,9 @@ int main(int argc, char *argv[]) {
     // Decompressing file.
     logger::info("Starting decompression.");
 
-    lz77_word *tab{};
-    __int64 word_tab_size = file_utils::readCompressedWordsFromFile(tab, input_filename);
-    std::string output_text = lz77::decompress(tab, word_tab_size, lookahead_buffer_size, search_buffer_size);
-    file_utils::writeToFile(output_text, output_filename);
+    std::vector<lz77_word> words = file_utils::readCompressedByteWordsFromFile(input_filename);
+    std::vector<char> data = lz77::decompressForBytes(words, lookahead_buffer_size, search_buffer_size);
+    file_utils::writeBytesToFile(output_filename, data);
 
     logger::info("Successfully decompressed!");
 

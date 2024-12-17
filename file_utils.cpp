@@ -77,6 +77,32 @@ __int64 file_utils::readCompressedWordsFromFile(lz77_word*& tab, const std::stri
     return (__int64) words.size();
 }
 
+std::vector<lz77_word> file_utils::readCompressedByteWordsFromFile(const std::string &filename){
+    std::fstream file(filename, std::ios::binary | std::ios::in);
+
+    std::vector<lz77_word> words;
+
+    lz77_word word{};
+
+    char *buff = new char[8];
+
+    while(!file.eof()){
+        file.read(buff, 8);
+        memcpy(&word.P, buff, 8);
+        file.read(buff, 8);
+        memcpy(&word.C, buff, 8);
+        file.read(buff, 1);
+        memcpy(&word.S, buff, 1);
+        words.push_back(word);
+    }
+
+    //words.pop_back();
+
+    delete []buff;
+
+    return words;
+}
+
 void file_utils::writeToFile(std::string& text, const std::string& filename){
     std::ofstream file;
     file.open(filename, std::ios::app);
@@ -95,3 +121,38 @@ void file_utils::writeBytesToFile(const std::string &filename, char *&tab, __int
     file.close();
 }
 
+void file_utils::writeBytesToFile(const std::string &filename, std::vector<char> data) {
+    std::fstream file;
+    file.open(filename, std::ios::ios_base::binary | std::ios::ios_base::out);
+
+    char *tab = new char[data.size()];
+
+    for(__int64 i = 0; i < data.size(); i++)
+        tab[i] = data[i];
+
+    file.write(tab, data.size());
+
+    file.close();
+
+    delete []tab;
+}
+
+void file_utils::writeCompressedByteWordsToFile(const std::string &filename, std::vector<lz77_word> words) {
+    std::fstream file(filename, std::ios::binary | std::ios::out);
+
+    char *buff = new char[8];
+
+    for(const lz77_word word : words){
+
+        memcpy(buff, &word.P, 8);
+        file.write(buff, 8);
+        memcpy(buff, &word.C, 8);
+        file.write(buff, 8);
+        memcpy(buff, &word.S, 1);
+        file.write(buff, 1);
+    }
+
+    file.close();
+
+    delete []buff;
+}
