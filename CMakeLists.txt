@@ -7,10 +7,6 @@ set(CMAKE_EXE_LINKER_FLAGS "-static")
 add_executable(lz77compressor main.cpp
         lz77.cpp
         lz77.h
-        testing.cpp
-        testing.h
-        string_utils.cpp
-        string_utils.h
         char_utils.cpp
         char_utils.h
         lz77_word.cpp

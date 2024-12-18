@@ -2,8 +2,6 @@
 // Created by Krzysztof on 21.11.2024.
 //
 
-#include <chrono>
-
 #include "lz77.h"
 #include "char_utils.h"
 
@@ -39,7 +37,7 @@ std::vector<char> lz77::decompressForBytes(const std::vector<lz77_word> &tab, co
     __int64 window_position = -lookahead_buf;
 
     for(__int64 i = 0; i < tab.size() - 1; i++){
-        char_utils::copy_array(result, window_position, lookahead_buf, tab[i].P, tab[i].C);
+        char_utils::copy_array(result, window_position, tab[i].P, tab[i].C);
         result.push_back(tab[i].S);
         window_position += tab[i].C + 1;
     }
