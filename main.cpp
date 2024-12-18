@@ -1,102 +1,13 @@
 #include <iostream>
 #include "lz77.h"
 
-#include "char_utils.h"
 #include "file_utils.h"
 #include "logger.h"
-#include "testing.h"
 
 // Mode in which application will work.
 enum mode{COMPRESS, DECOMPRESS, UNDEFINED};
 
 int main(int argc, char *argv[]) {
-
-    /*{
-        char* testTab;
-        __int64 testTab_size;
-        file_utils::readBytesFromFile("reto.jpg", testTab, testTab_size);
-        //std::cout << testTab_size * 8;
-
-        testing::printTab(testTab, testTab_size);
-
-        //std::string testString = std::string(testTab);
-
-        std::string outputTestString = lz77::compressForBytes(testTab, testTab_size, 15, 15);
-        file_utils::writeToFile(outputTestString, "reto.compress");
-
-        delete []testTab;
-    }*/
-
-    /*{
-        lz77_word* tab;
-        __int64 tab_size = file_utils::readCompressedWordsFromFile(tab, "reto.compress");
-        std::vector<char> decompressedMp3 = lz77::decompressForBytes(tab, tab_size, 512, 128);
-        char* tab_c = new char[decompressedMp3.size()];
-
-        for(__int64 i = 0; i < decompressedMp3.size(); i++)
-            tab_c[i] = decompressedMp3[i];
-
-        __int64 ss = (__int64) decompressedMp3.size();
-        //std::cout << tab_c[ss - 1];
-
-        file_utils::writeBytesToFile("reto2.jpg", tab_c, ss);
-
-        delete []tab_c;
-    }*/
-
-    /*{
-        std::fstream file("test.byt", std::ios::binary | std::ios::out);
-
-        __int64 a = 127, b = 18;
-        int c = 3;
-        char *t = new char[8];
-        memcpy(t, &a, 8);
-        file.write(t, 8);
-        memcpy(t, &b, 8);
-        file.write(t, 8);
-        memcpy(t, &c, 4);
-        file.write(t, 4);
-
-        file.close();
-
-        delete []t;
-    }*/
-
-    /*{
-        lz77_word a{128, 17, 'a'};
-        lz77_word b{36247, 13482, 'h'};
-
-        std::vector<lz77_word> vec{a, b};
-
-        file_utils::writeCompressedByteWordsToFile("test.byt", vec);
-
-    }*/
-
-    /*{
-
-        std::vector<lz77_word> vec = file_utils::readCompressedByteWordsFromFile("test.byt");
-
-        for(const lz77_word word : vec)
-            std::cout << word.P << " " << word.C << " " << word.S << std::endl;
-
-    }*/
-
-    /*{
-        char *tab;
-        __int64 tab_size;
-        file_utils::readBytesFromFile("testy.txt", tab, tab_size);
-
-        std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, 15, 15);
-        file_utils::writeCompressedByteWordsToFile("reto.compress", words);
-    }*/
-
-    /*{
-        std::vector<lz77_word> words = file_utils::readCompressedByteWordsFromFile("reto.compress");
-        std::vector<char> data = lz77::decompressForBytes(words, 15, 15);
-        file_utils::writeBytesToFile("l.txt", data);
-    }*/
-
-    std::cout << std::endl << std::endl;
 
     // For logging purpose.
     std::string info;
@@ -242,14 +153,7 @@ int main(int argc, char *argv[]) {
         char *tab;
         __int64 tab_size;
         file_utils::readBytesFromFile(input_filename, tab, tab_size);
-        //std::cout << "LA: " << lookahead_buffer_size << std::endl;
         std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
-
-        std::cout << "Wypisanie: " << std::endl;
-        for(lz77_word w : words){
-            std::cout << w.P << " " << w.C << " " << w.S << std::endl;
-        }
-
         file_utils::writeCompressedByteWordsToFile(output_filename, words);
 
         logger::info("Successfully compressed!");

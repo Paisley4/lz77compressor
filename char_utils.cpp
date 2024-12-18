@@ -68,19 +68,21 @@ void char_utils::slide_array(char *tab, const __int64 &tab_size, const __int64 &
 
 lz77_word char_utils::find_longest_string(char *tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf) {
 
-    lz77_word lz77Word{0, 0, tab[window_position+lookahead_buf+1]};
+    lz77_word lz77Word{0, 0, tab[window_position+lookahead_buf]};
 
     __int64 index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
 
     do {
-        std::cout << "CO " << index << " " << window_position + lookahead_buf + 1 << std::endl;
+        //std::cout << index << std::endl;
+        //std::cout << "CO " << index << " " << window_position + lookahead_buf + 1 << std::endl;
         if(char_utils::contain_word(tab, lookahead_buf, window_position, index, lz77Word)){
+            //std::cout << lookahead_buf << " " << window_position << " " << index << std::endl;
             lz77Word.S = tab[window_position + lz77Word.C + lookahead_buf];
-            std::cout << "DO " << index << " " << lz77Word.C + 1 << std::endl;
+            //std::cout << "DO " << index << " " << lz77Word.C + 1 << std::endl;
             break;
         }
         index--;
-    }while (index > window_position + lookahead_buf + 1);
+    }while (index > window_position + lookahead_buf);
 
     return lz77Word;
 
@@ -89,30 +91,33 @@ lz77_word char_utils::find_longest_string(char *tab, const __int64 &tab_size, co
 // Checks if string contains specified substring.
 bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word) {
 
+
     for(__int64 lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
 
-        // If word's length is bigger than searching place, we cannot find word.
-        if(lookahead_buf - lookahead_index + window_position < end - lookahead_buf + 1)
+        if(lookahead_buf - lookahead_index < end - lookahead_buf + window_position){
+            //std::cout << "Zwrocono dla " << word.S << std::endl;
             return false;
+        }
 
         bool isOk = true;
 
-        // Searching specified word.
-        for(__int64 search_index = 0; search_index < end - lookahead_buf + 1; search_index++){
+        for(__int64 search_index = 0; search_index < end - lookahead_buf - window_position + 1; search_index++){
 
-            //std::max((__int64) 0, search_index + lookahead_index + window_position);
+            //std::cout << tab[std::max((__int64) 0, lookahead_index + window_position)] << " != " << tab[search_index + window_position + lookahead_buf] << std::endl;
 
-            // Two characters doesn't match.
-            if(/* Zawartosc bufora historii */tab[std::max((__int64) 0, lookahead_index + window_position)] != /* Zawartosc bufora szukania */tab[search_index + lookahead_buf + window_position]){
+            if(tab[std::max((__int64) 0, lookahead_index + window_position + search_index)] != tab[search_index + window_position + lookahead_buf]){
                 isOk = false;
                 break;
             }
+
+            //lookahead_index++;
 
         }
 
         if(isOk){
             word.P = lookahead_index;
-            word.C = end - lookahead_buf + 1;
+            word.C = end - window_position - lookahead_buf + 1;
+            //std::cout << end << " " << word.C << " " << word.S << std::endl;
             return true;
         }
 
@@ -173,9 +178,9 @@ void char_utils::copy_array(std::vector<char> &tab, const __int64 &window_positi
     //std::cout << n << std::endl;
 
     for(__int64 i = 0; i < n; i++){
-        //std::cout << tab[std::max(window_position - lookahead_buf + i, (__int64) 0)] << std::endl;
-        std::cout << "Pobieram z: " << std::max(window_position + i, (__int64) 0) << " " << tab[std::max(window_position + i, (__int64) 0)] << std::endl;
-        tab.push_back(tab[std::max(window_position + i, (__int64) 0)]);
+        //std::cout << window_position << std::endl;
+        //std::cout << "Pobieram z: " << std::max(window_position + i, (__int64) 0) << " " << tab[std::max(window_position + i, (__int64) 0)] << std::endl;
+        tab.push_back(tab[std::max(window_position + begin + i, (__int64) 0)]);
     }
 
 }
