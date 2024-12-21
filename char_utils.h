@@ -13,8 +13,8 @@
 class char_utils {
 
 public:
-    static lz77_word find_longest_string(char *tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf);
-    static bool contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word);
+    static lz77_word find_longest_string(char* &tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf);
+    static bool contain_word(char* &tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word);
     static void copy_array(std::vector<char> &tab, const __int64 &window_position, const __int64 &begin, const __int64 &n);
 
 };

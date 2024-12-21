@@ -4,7 +4,7 @@
 
 #include "char_utils.h"
 
-lz77_word char_utils::find_longest_string(char *tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf) {
+lz77_word char_utils::find_longest_string(char* &tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf) {
 
     lz77_word lz77Word{0, 0, tab[window_position+lookahead_buf]};
 
@@ -23,7 +23,7 @@ lz77_word char_utils::find_longest_string(char *tab, const __int64 &tab_size, co
 }
 
 // Checks if string contains specified substring.
-bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word) {
+bool char_utils::contain_word(char* &tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word) {
 
 
     for(__int64 lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){

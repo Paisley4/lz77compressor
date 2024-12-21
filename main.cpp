@@ -153,8 +153,16 @@ int main(int argc, char *argv[]) {
         char *tab;
         __int64 tab_size;
         file_utils::readBytesFromFile(input_filename, tab, tab_size);
+
         std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
+
+        /*for(lz77_word w : words){
+            std::cout << w.P << " " << w.C << " " << w.S << std::endl;
+        }*/
+
         file_utils::writeCompressedByteWordsToFile(output_filename, words);
+
+        delete []tab;
 
         logger::info("Successfully compressed!");
         return 0;

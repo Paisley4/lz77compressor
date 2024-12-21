@@ -11,3 +11,12 @@
 58	1259	7562591977899175	CMakeFiles/lz77compressor.dir/char_utils.cpp.obj	864825bb053209a8
 9	1288	7562591977410415	CMakeFiles/lz77compressor.dir/lz77.cpp.obj	d7baa8da87de54a3
 1288	1989	7562591990196036	lz77compressor.exe	e8f16ab7c3898fba
+19	3566	7563178198722935	CMakeFiles/lz77compressor.dir/main.cpp.obj	cbba8ddeb65109db
+3567	4391	7563178234190799	lz77compressor.exe	e8f16ab7c3898fba
+114	3180	7564021637534872	CMakeFiles/lz77compressor.dir/char_utils.cpp.obj	864825bb053209a8
+24	3373	7564021636627294	CMakeFiles/lz77compressor.dir/main.cpp.obj	cbba8ddeb65109db
+240	1782	7564022591050055	CMakeFiles/lz77compressor.dir/char_utils.cpp.obj	864825bb053209a8
+22	1808	7564022588865887	CMakeFiles/lz77compressor.dir/lz77.cpp.obj	d7baa8da87de54a3
+1808	2667	7564022606730141	lz77compressor.exe	e8f16ab7c3898fba
+26	1956	7564022886894125	CMakeFiles/lz77compressor.dir/main.cpp.obj	cbba8ddeb65109db
+1956	2803	7564022906198172	lz77compressor.exe	e8f16ab7c3898fba
