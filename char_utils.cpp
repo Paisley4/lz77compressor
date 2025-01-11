@@ -4,11 +4,11 @@
 
 #include "char_utils.h"
 
-lz77_word char_utils::find_longest_string(char* &tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf) {
+lz77_word char_utils::find_longest_string(char* &tab, const std::uint64_t &tab_size, const std::uint64_t &window_position, const std::uint64_t &lookahead_buf, const std::uint64_t &search_buf) {
 
     lz77_word lz77Word{0, 0, tab[window_position+lookahead_buf]};
 
-    __int64 index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
+    std::uint64_t index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
 
     do {
         if(char_utils::contain_word(tab, lookahead_buf, window_position, index, lz77Word)){
@@ -23,18 +23,18 @@ lz77_word char_utils::find_longest_string(char* &tab, const __int64 &tab_size, c
 }
 
 // Checks if string contains specified substring.
-bool char_utils::contain_word(char* &tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word) {
+bool char_utils::contain_word(char* &tab, const std::uint64_t &lookahead_buf, const std::uint64_t &window_position, const std::uint64_t &end, lz77_word &word) {
 
-    for(__int64 lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
+    for(std::uint64_t lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
 
         if(lookahead_buf - lookahead_index < end - lookahead_buf + window_position)
             return false;
 
         bool isOk = true;
 
-        for(__int64 search_index = 0; search_index < end - lookahead_buf - window_position + 1; search_index++){
+        for(std::uint64_t search_index = 0; search_index < end - lookahead_buf - window_position + 1; search_index++){
 
-            if(tab[std::max((__int64) 0, lookahead_index + window_position + search_index)] != tab[search_index + window_position + lookahead_buf]){
+            if(tab[std::max((std::uint64_t) 0, lookahead_index + window_position + search_index)] != tab[search_index + window_position + lookahead_buf]){
                 isOk = false;
                 break;
             }
@@ -54,14 +54,14 @@ bool char_utils::contain_word(char* &tab, const __int64 &lookahead_buf, const __
 }
 
 // KMP algorithm
-/*bool char_utils::contain_word(const char *tab, const __int64 &lookahead_buf, const __int64 &begin, const __int64 &end, lz77_word &word) {
+/*bool char_utils::contain_word(const char *tab, const std::uint64_t &lookahead_buf, const std::uint64_t &begin, const std::uint64_t &end, lz77_word &word) {
 
     // Creating prefix array.
-    std::vector<__int64> pref;
-    __int64 j = 0;
-    __int64 m = end - begin + 1;
+    std::vector<std::uint64_t> pref;
+    std::uint64_t j = 0;
+    std::uint64_t m = end - begin + 1;
     pref.resize(m, 0);
-    for(__int64 k = 1; k < m; k++){
+    for(std::uint64_t k = 1; k < m; k++){
         while (j > 0 && tab[begin + j] != tab[begin + k])
             j = pref[j - 1];
 
@@ -72,7 +72,7 @@ bool char_utils::contain_word(char* &tab, const __int64 &lookahead_buf, const __
     }
 
     j = 0;
-    for(__int64 i = 0; i < lookahead_buf; i++){
+    for(std::uint64_t i = 0; i < lookahead_buf; i++){
         while(j > 0 && tab[begin + j] != tab[i])
             j = pref[j - 1];
 
@@ -90,9 +90,9 @@ bool char_utils::contain_word(char* &tab, const __int64 &lookahead_buf, const __
 
 }*/
 
-void char_utils::copy_array(std::vector<char> &tab, const __int64 &window_position, const __int64 &begin, const __int64 &n) {
+void char_utils::copy_array(std::vector<char> &tab, const std::uint64_t &window_position, const std::uint64_t &begin, const std::uint64_t &n) {
 
-    for(__int64 i = 0; i < n; i++)
-        tab.push_back(tab[std::max(window_position + begin + i, (__int64) 0)]);
+    for(std::uint64_t i = 0; i < n; i++)
+        tab.push_back(tab[std::max(window_position + begin + i, (std::uint64_t) 0)]);
 
 }

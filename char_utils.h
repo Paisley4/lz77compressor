@@ -13,9 +13,9 @@
 class char_utils {
 
 public:
-    static lz77_word find_longest_string(char* &tab, const __int64 &tab_size, const __int64 &window_position, const __int64 &lookahead_buf, const __int64 &search_buf);
-    static bool contain_word(char* &tab, const __int64 &lookahead_buf, const __int64 &window_position, const __int64 &end, lz77_word &word);
-    static void copy_array(std::vector<char> &tab, const __int64 &window_position, const __int64 &begin, const __int64 &n);
+    static lz77_word find_longest_string(char* &tab, const std::uint64_t &tab_size, const std::uint64_t &window_position, const std::uint64_t &lookahead_buf, const std::uint64_t &search_buf);
+    static bool contain_word(char* &tab, const std::uint64_t &lookahead_buf, const std::uint64_t &window_position, const std::uint64_t &end, lz77_word &word);
+    static void copy_array(std::vector<char> &tab, const std::uint64_t &window_position, const std::uint64_t &begin, const std::uint64_t &n);
 
 };
 

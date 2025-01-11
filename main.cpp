@@ -154,14 +154,18 @@ int main(int argc, char *argv[]) {
         logger::info("Starting compression.");
 
         char *tab;
-        __int64 tab_size;
+        std::int64_t tab_size;
         file_utils::readBytesFromFile(input_filename, tab, tab_size);
+
+        std::cout << tab_size << std::endl;
 
         std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
 
         /*for(lz77_word w : words){
             std::cout << w.P << " " << w.C << " " << w.S << std::endl;
         }*/
+
+        std::cout << words.size() << std::endl;
 
         file_utils::writeCompressedByteWordsToFile(output_filename, words);
 

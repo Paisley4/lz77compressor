@@ -4,7 +4,7 @@
 
 #include "file_utils.h"
 
-void file_utils::readBytesFromFile(const std::string &filename, char*& tab, __int64& tab_size){
+void file_utils::readBytesFromFile(const std::string &filename, char*& tab, std::int64_t& tab_size){
     std::ifstream file(filename, std::ios::ios_base::in | std::ios::ios_base::binary);
 
     file.seekg(0, std::ios::end);
@@ -50,7 +50,7 @@ void file_utils::writeBytesToFile(const std::string &filename, std::vector<char>
 
     char *tab = new char[data.size()];
 
-    for(__int64 i = 0; i < data.size(); i++)
+    for(std::uint64_t i = 0; i < data.size(); i++)
         tab[i] = data[i];
 
     file.write(tab, data.size());
