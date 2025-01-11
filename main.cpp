@@ -1,6 +1,8 @@
 #include <iostream>
-#include "lz77.h"
+#include <cstdint>
+#include <cmath>
 
+#include "lz77.h"
 #include "file_utils.h"
 #include "logger.h"
 
@@ -15,7 +17,7 @@ int main(int argc, char *argv[]) {
     // Parameters
     mode app_mode = mode::UNDEFINED;
     std::string input_filename, output_filename;
-    __int64 lookahead_buffer_size, search_buffer_size;
+    std::uint16_t lookahead_buffer_size, search_buffer_size;
 
     // If there is no arg, printing instruction.
     if(argc <= 1){
@@ -130,6 +132,7 @@ int main(int argc, char *argv[]) {
     }
 
     if(search_buffer_size <= 0){
+        std::cout << search_buffer_size << std::endl;
         logger::info("Size of search buffer is too small. (should be > 0)");
         return 0;
     }
