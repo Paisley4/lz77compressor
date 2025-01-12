@@ -15,7 +15,6 @@ std::vector<lz77_word> lz77::compressForBytes(char* &input, const std::int64_t &
     lz77_word lz77Word{};
 
     // Iterating all possible words.
-    std::cout << window_position << " < " << lookahead_buf << std::endl;
     while (window_position < tab_size - lookahead_buf){
         lz77Word = char_utils::find_longest_string(input, tab_size, window_position, lookahead_buf, search_buf);
 

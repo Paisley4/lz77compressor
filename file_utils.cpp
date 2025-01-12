@@ -30,6 +30,15 @@ std::vector<lz77_word> file_utils::readCompressedByteWordsFromFile(const std::st
     char *buff = new char[2];
 
     while(!file.eof()){
+        file.read(buff, 1);
+        if(buff[0] == '0') {
+            word.P = 0;
+            word.C = 0;
+            file.read(buff, 1);
+            word.S = buff[0];
+            words.push_back(word);
+            continue;
+        }
         file.read(buff, 2);
         memcpy(&word.P, buff, 2);
         file.read(buff, 2);
@@ -67,6 +76,12 @@ void file_utils::writeCompressedByteWordsToFile(const std::string &filename, std
 
     for(const lz77_word word : words){
 
+        if (word.C == 0) {
+            file << '0';
+            file << word.S;
+            continue;
+        }
+        file << '1';
         memcpy(buff, &word.P, 2);
         file.write(buff, 2);
         memcpy(buff, &word.C, 2);

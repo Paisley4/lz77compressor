@@ -11,7 +11,7 @@ lz77_word char_utils::find_longest_string(char* &tab, const std::uint64_t &tab_s
     std::uint64_t index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
 
     do {
-        if(char_utils::contain_word(tab, lookahead_buf, window_position, index, lz77Word)){
+        if(contain_word(tab, lookahead_buf, window_position, index, lz77Word)){
             lz77Word.S = tab[window_position + lz77Word.C + lookahead_buf];
             break;
         }

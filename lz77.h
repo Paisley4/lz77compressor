@@ -14,10 +14,8 @@ class lz77 {
 
 public:
     //static std::string compress(std::string &input, const std::uint64_t &lookahead_buf, const std::uint64_t &search_buf);
-    // Test for bytes
     static std::vector<lz77_word> compressForBytes(char* &input, const std::int64_t &tab_size, const std::int64_t &lookahead_buf, const std::int64_t &search_buf);
     //static std::string decompress(const lz77_word *tab, const std::uint64_t &tab_size, const std::uint64_t &lookahead_buf, const std::uint64_t &output_buf);
-    // Also test for bytes
     static std::vector<char> decompressForBytes(const std::vector<lz77_word> &tab, const std::int64_t &lookahead_buf, const std::int64_t &output_buf);
 
 };
