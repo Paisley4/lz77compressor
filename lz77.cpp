@@ -38,7 +38,8 @@ std::vector<char> lz77::decompressForBytes(const std::vector<lz77_word> &tab, co
 
     for(uint64_t i = 0; i < tab.size() - 1; i++){
         char_utils::copy_array(result, window_position, tab[i].P, tab[i].C);
-        result.push_back(tab[i].S);
+        if (i+1 < tab.size() - 1)
+            result.push_back(tab[i].S);
         window_position += tab[i].C + 1;
     }
 

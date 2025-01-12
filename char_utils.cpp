@@ -4,11 +4,11 @@
 
 #include "char_utils.h"
 
-lz77_word char_utils::find_longest_string(char* &tab, const std::uint64_t &tab_size, const std::uint64_t &window_position, const std::uint64_t &lookahead_buf, const std::uint64_t &search_buf) {
+lz77_word char_utils::find_longest_string(char* &tab, const std::uint64_t &tab_size, const std::int64_t &window_position, const std::uint64_t &lookahead_buf, const std::uint64_t &search_buf) {
 
     lz77_word lz77Word{0, 0, tab[window_position+lookahead_buf]};
 
-    std::uint64_t index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
+    std::int64_t index = std::min(window_position + lookahead_buf + search_buf, tab_size) - 1;
 
     do {
         if(contain_word(tab, lookahead_buf, window_position, index, lz77Word)){
@@ -23,16 +23,17 @@ lz77_word char_utils::find_longest_string(char* &tab, const std::uint64_t &tab_s
 }
 
 // Checks if string contains specified substring.
-bool char_utils::contain_word(char* &tab, const std::uint64_t &lookahead_buf, const std::uint64_t &window_position, const std::uint64_t &end, lz77_word &word) {
+bool char_utils::contain_word(char* &tab, const std::uint64_t &lookahead_buf, const std::int64_t &window_position, const std::int64_t &end, lz77_word &word) {
 
-    for(std::uint64_t lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++){
+    for (std::uint64_t lookahead_index = 0; lookahead_index < lookahead_buf; lookahead_index++) {
 
-        if(lookahead_buf - lookahead_index < end - lookahead_buf + window_position)
+        if (lookahead_buf - lookahead_index < end - window_position - lookahead_buf) {
             return false;
+        }
 
         bool isOk = true;
 
-        for(std::uint64_t search_index = 0; search_index < end - lookahead_buf - window_position + 1; search_index++){
+        for (std::uint64_t search_index = 0; search_index < end - lookahead_buf - window_position + 1; search_index++) {
 
             if(tab[std::max((std::uint64_t) 0, lookahead_index + window_position + search_index)] != tab[search_index + window_position + lookahead_buf]){
                 isOk = false;
@@ -90,7 +91,7 @@ bool char_utils::contain_word(char* &tab, const std::uint64_t &lookahead_buf, co
 
 }*/
 
-void char_utils::copy_array(std::vector<char> &tab, const std::uint64_t &window_position, const std::uint64_t &begin, const std::uint64_t &n) {
+void char_utils::copy_array(std::vector<char> &tab, const std::int64_t &window_position, const std::uint64_t &begin, const std::uint64_t &n) {
 
     for(std::uint64_t i = 0; i < n; i++)
         tab.push_back(tab[std::max(window_position + begin + i, (std::uint64_t) 0)]);
