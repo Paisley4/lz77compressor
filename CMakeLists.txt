@@ -8,7 +8,6 @@ add_executable(lz77compressor main.cpp
         lz77.h
         char_utils.cpp
         char_utils.h
-        lz77_word.cpp
         lz77_word.h
         file_utils.cpp
         file_utils.h

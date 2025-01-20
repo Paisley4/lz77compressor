@@ -15,7 +15,7 @@ class file_utils {
 public:
     static void readBytesFromFile(const std::string &filename, char*& tab, std::int64_t& tab_size);
     static std::vector<lz77_word> readCompressedByteWordsFromFile(const std::string &filename);
-    static void writeCompressedByteWordsToFile(const std::string &filename, std::vector<lz77_word> words);
+    static void writeCompressedByteWordsToFile(const std::string &filename, const std::vector<lz77_word>& words);
     static void writeBytesToFile(const std::string &filename, std::vector<char> data);
 };
 

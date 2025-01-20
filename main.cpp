@@ -116,12 +116,12 @@ int main(int argc, char *argv[]) {
     }
 
     if(input_filename.empty()){
-        logger::info("Undefined input file name.");
+        logger::info("Undefined input filename.");
         return 0;
     }
 
     if(output_filename.empty()){
-        logger::info("Undefined output file name.");
+        logger::info("Undefined output filename.");
         return 0;
     }
 

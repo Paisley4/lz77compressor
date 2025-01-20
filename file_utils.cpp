@@ -69,7 +69,7 @@ void file_utils::writeBytesToFile(const std::string &filename, std::vector<char>
     delete []tab;
 }
 
-void file_utils::writeCompressedByteWordsToFile(const std::string &filename, std::vector<lz77_word> words) {
+void file_utils::writeCompressedByteWordsToFile(const std::string &filename, const std::vector<lz77_word>& words) {
     std::fstream file(filename, std::ios::binary | std::ios::out);
 
     char *buff = new char[2];
