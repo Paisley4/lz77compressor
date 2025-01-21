@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
 
         std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
 
-        file_utils::writeCompressedByteWordsToFile(output_filename, words);
+        file_utils::writeCompressedWordsToFile(output_filename, words, lookahead_buffer_size, search_buffer_size);
 
         delete []tab;
 
@@ -169,7 +169,7 @@ int main(int argc, char *argv[]) {
     // Decompressing file.
     logger::info("Starting decompression.");
 
-    std::vector<lz77_word> words = file_utils::readCompressedByteWordsFromFile(input_filename);
+    std::vector<lz77_word> words = file_utils::readCompressedWordsFromFile(input_filename, lookahead_buffer_size, search_buffer_size);
     std::vector<char> data = lz77::decompressForBytes(words, lookahead_buffer_size, search_buffer_size);
     file_utils::writeBytesToFile(output_filename, data);
 

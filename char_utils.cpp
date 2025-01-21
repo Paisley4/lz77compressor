@@ -13,7 +13,7 @@ lz77_word char_utils::findLongestString(char* &tab, std::uint64_t tab_size, std:
         if (tab[std::max(window_position + lookahead_index, (std::uint64_t) 0)] == tab[window_position + lookahead_buf + search_index]) {
             temp.C++;
             temp.S = tab[window_position + lookahead_buf + search_index + 1];
-            if (temp.C > word.C) {
+            if (temp.C > word.C && temp.C > 1) {
                 word = temp;
             }
             lookahead_index++;

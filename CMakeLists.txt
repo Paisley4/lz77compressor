@@ -13,4 +13,6 @@ add_executable(lz77compressor main.cpp
         file_utils.h
         logger.cpp
         logger.h
+        data_utils.cpp
+        data_utils.h
 )
