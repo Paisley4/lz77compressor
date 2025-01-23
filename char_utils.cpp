@@ -4,7 +4,7 @@
 
 #include "char_utils.h"
 
-lz77_word char_utils::findLongestString(char* &tab, std::uint64_t tab_size, std::int64_t window_position, std::uint64_t lookahead_buf, std::uint64_t search_buf) {
+lz77_word char_utils::findLongestString(char* &tab, std::int64_t window_position, std::uint64_t lookahead_buf, std::uint64_t search_buf) {
     lz77_word word{0, 0, tab[window_position + lookahead_buf]};
     std::uint64_t lookahead_index = 0, search_index = 0;
 
@@ -31,7 +31,7 @@ lz77_word char_utils::findLongestString(char* &tab, std::uint64_t tab_size, std:
     return word;
 }
 
-void char_utils::copyArray(std::vector<char> &tab, const std::int64_t &window_position, const std::uint64_t &begin, const std::uint64_t &n) {
+void char_utils::copyArray(std::vector<char> &tab, std::int64_t window_position, std::uint64_t begin, std::uint64_t n) {
 
     for(std::uint64_t i = 0; i < n; i++)
         tab.push_back(tab[std::max(window_position + begin + i, (std::uint64_t) 0)]);

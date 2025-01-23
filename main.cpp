@@ -170,7 +170,7 @@ int main(int argc, char *argv[]) {
     logger::info("Starting decompression.");
 
     std::vector<lz77_word> words = file_utils::readCompressedWordsFromFile(input_filename, lookahead_buffer_size, search_buffer_size);
-    std::vector<char> data = lz77::decompressForBytes(words, lookahead_buffer_size, search_buffer_size);
+    std::vector<char> data = lz77::decompressForBytes(words, lookahead_buffer_size);
     file_utils::writeBytesToFile(output_filename, data);
 
     logger::info("Successfully decompressed!");

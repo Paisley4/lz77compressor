@@ -76,6 +76,7 @@ std::vector<lz77_word> file_utils::readCompressedWordsFromFile(const std::string
         }
         if (word.C > 0) {
             word.C++;
+            word.P++;
         }
         word.S = 0;
         for (uint8_t i = 0; i < 8; i++) {
@@ -96,46 +97,75 @@ std::vector<lz77_word> file_utils::readCompressedWordsFromFile(const std::string
 
 void file_utils::writeCompressedWordsToFile(const std::string &filename, const std::vector<lz77_word>& words, uint16_t lookahead_buffer_size, uint16_t search_buffer_size) {
 
-    std::vector<bool> bitData;
-
+    // Calculating size of bytes buffer
     int16_t lookaheadBitSize = data_utils::getNumberBitSize(lookahead_buffer_size-1), searchBitSize = data_utils::getNumberBitSize(search_buffer_size-1);
 
-    // Zamiana słów na bity
+    uint64_t buffer_size = (lookaheadBitSize + searchBitSize + 8) * words.size() / 8;
+    if (buffer_size * 8 != (lookaheadBitSize + searchBitSize + 8) * words.size()) {
+        buffer_size++;
+    }
+
+    char *buffer = new char[buffer_size];
+
+    char tempByte = 0;
+
+    int8_t bitPosition = 0;
+    int64_t bytePosition = 0;
+
+    // Changing words to bytes
     for(lz77_word word : words) {
-        for (int16_t i = lookaheadBitSize - 1; i >= 0; i--) {
-            bitData.push_back(word.P >> i & 1);
-        }
         if (word.C > 0) {
             word.C--;
+            word.P--;
+        }
+        for (int16_t i = lookaheadBitSize - 1; i >= 0; i--) {
+            tempByte = (tempByte << 1) | (word.P >> i & 1);
+            bitPosition++;
+            if (bitPosition >= 8) {
+                bitPosition = 0;
+                buffer[bytePosition] = tempByte;
+                tempByte = 0;
+                bytePosition++;
+            }
         }
         for (int16_t i = searchBitSize - 1; i >= 0; i--) {
-            bitData.push_back(word.C >> i & 1);
+            tempByte = (tempByte << 1) | (word.C >> i & 1);
+            bitPosition++;
+            if (bitPosition >= 8) {
+                bitPosition = 0;
+                buffer[bytePosition] = tempByte;
+                tempByte = 0;
+                bytePosition++;
+            }
         }
         for (int16_t i = 7; i >= 0; i--) {
-            bitData.push_back(word.S >> i & 1);
+            tempByte = (tempByte << 1) | (word.S >> i & 1);
+            bitPosition++;
+            if (bitPosition >= 8) {
+                bitPosition = 0;
+                buffer[bytePosition] = tempByte;
+                tempByte = 0;
+                bytePosition++;
+            }
+        }
+    }
+
+    // Completing byte
+    while (bitPosition != 0) {
+        tempByte = (tempByte << 1) | 0;
+        bitPosition++;
+        if (bitPosition >= 7) {
+            buffer[bytePosition] = tempByte;
+            bitPosition = 0;
         }
     }
 
     std::fstream file(filename, std::ios::binary | std::ios::out);
 
-    char tempByte;
-
-    // Pakowanie bitów w byte
-    uint64_t dataPosition = 0;
-    while (dataPosition < bitData.size()) {
-        tempByte = 0;
-        // Pakowanie
-        for (int8_t i = 0; i < 8; i++) {
-            if (dataPosition >= bitData.size()) {
-                tempByte = (tempByte << 1) | 0;
-                continue;
-            }
-            tempByte = (tempByte << 1) | bitData[dataPosition];
-            dataPosition++;
-        }
-        file.write(&tempByte, 1);
-    }
+    file.write(buffer, buffer_size);
 
     file.close();
+
+    delete []buffer;
 
 }
