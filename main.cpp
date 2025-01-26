@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdint>
 
+#include "data_utils.h"
 #include "lz77.h"
 #include "file_utils.h"
 #include "logger.h"
@@ -158,9 +159,9 @@ int main(int argc, char *argv[]) {
 
         std::vector<lz77_word> words = lz77::compressForBytes(tab, tab_size, lookahead_buffer_size, search_buffer_size);
 
-        file_utils::writeCompressedWordsToFile(output_filename, words, lookahead_buffer_size, search_buffer_size);
-
         delete []tab;
+
+        file_utils::writeCompressedWordsToFile(output_filename, words, lookahead_buffer_size, search_buffer_size);
 
         logger::info("Successfully compressed!");
         return 0;

@@ -8,7 +8,7 @@ int16_t data_utils::getNumberBitSize(int64_t number) {
     int16_t size = 0;
 
     if (number == 0) {
-        return 0;
+        return 1;
     }
 
     while (number != 0) {

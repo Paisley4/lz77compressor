@@ -13,7 +13,7 @@
 class char_utils {
 
 public:
-    static lz77_word findLongestString(char* &tab, std::int64_t window_position, std::uint64_t lookahead_buf, std::uint64_t search_buf);
+    static lz77_word findLongestString(char* &tab, std::int64_t window_position, std::int64_t lookahead_buf, std::int64_t search_buf);
     static void copyArray(std::vector<char> &tab, std::int64_t window_position, std::uint64_t begin, std::uint64_t n);
 
 };
