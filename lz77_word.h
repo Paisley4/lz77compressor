@@ -11,7 +11,11 @@
 class lz77_word {
 
 public:
-    std::uint16_t P, C;
+    /// @brief On which position from start of window there is matching string.
+    std::uint16_t P;
+    /// @brief How long matching string is.
+    std::uint16_t C;
+    /// @brief Next byte after matching string.
     char S;
 
 };

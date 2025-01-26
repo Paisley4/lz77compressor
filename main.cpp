@@ -7,7 +7,11 @@
 #include "logger.h"
 
 // Mode in which application will work.
-enum mode{COMPRESS, DECOMPRESS, UNDEFINED};
+enum mode {
+    COMPRESS, // Application will compress input file data.
+    DECOMPRESS, // Application will decompress input file data.
+    UNDEFINED // Undefined application mode.
+};
 
 int main(int argc, char *argv[]) {
 

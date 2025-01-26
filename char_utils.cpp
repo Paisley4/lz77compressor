@@ -4,13 +4,21 @@
 
 #include "char_utils.h"
 
+/**
+ * @brief Finds longest string that repeats in look-ahead buffer and search buffer.
+ *
+ * @param tab Array with all bytes.
+ * @param window_position Position of buffer window.
+ * @param lookahead_buf Length of look-ahead buffer.
+ * @param search_buf Length of search buffer.
+ * @return Longest string in specified buffer window.
+ */
 lz77_word char_utils::findLongestString(char* &tab, std::int64_t window_position, std::int64_t lookahead_buf, std::int64_t search_buf) {
     lz77_word word{0, 0, tab[window_position + lookahead_buf]};
     std::int64_t lookahead_index = 0, search_index = 0;
 
     lz77_word temp = word;
     while (lookahead_index < lookahead_buf && search_index < search_buf) {
-        //std::cout << std::max(window_position + lookahead_index, (std::int64_t) 0) << " " << window_position + lookahead_buf + search_index << std::endl;
         if (tab[std::max(window_position + lookahead_index, (std::int64_t) 0)] == tab[window_position + lookahead_buf + search_index]) {
             temp.C++;
             temp.S = tab[window_position + lookahead_buf + search_index + 1];
@@ -32,6 +40,14 @@ lz77_word char_utils::findLongestString(char* &tab, std::int64_t window_position
     return word;
 }
 
+/**
+ * @brief Copies specified length of bytes at specified window position.
+ *
+ * @param tab Vector of bytes.
+ * @param window_position Position of buffer window.
+ * @param begin Position where string begins.
+ * @param n Size of string.
+ */
 void char_utils::copyArray(std::vector<char> &tab, std::int64_t window_position, std::uint64_t begin, std::uint64_t n) {
 
     for(std::uint64_t i = 0; i < n; i++)

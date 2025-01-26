@@ -6,6 +6,13 @@
 
 #include "data_utils.h"
 
+/**
+ * @brief Reads bytes from file and writes it to array.
+ *
+ * @param filename Name of input file.
+ * @param tab Array where bytes will be saved.
+ * @param tab_size Variable where size of array will be saved.
+ */
 void file_utils::readBytesFromFile(const std::string &filename, char*& tab, std::int64_t& tab_size){
     std::ifstream file(filename, std::ios::ios_base::in | std::ios::ios_base::binary);
 
@@ -20,6 +27,12 @@ void file_utils::readBytesFromFile(const std::string &filename, char*& tab, std:
     file.close();
 }
 
+/**
+ * @brief Writes vector of data to file.
+ *
+ * @param filename Name of output file.
+ * @param data Vector of bytes.
+ */
 void file_utils::writeBytesToFile(const std::string &filename, std::vector<char> data) {
     std::fstream file;
     file.open(filename, std::ios::ios_base::binary | std::ios::ios_base::out);
@@ -36,6 +49,14 @@ void file_utils::writeBytesToFile(const std::string &filename, std::vector<char>
     delete []tab;
 }
 
+/**
+ * @brief Reads compressed LZ77 words from file.
+ *
+ * @param filename Name of input file.
+ * @param lookahead_buffer_size Size of look-ahead buffer.
+ * @param search_buffer_size Size of search buffer.
+ * @return Vector of LZ77 compressed words.
+ */
 std::vector<lz77_word> file_utils::readCompressedWordsFromFile(const std::string &filename, uint16_t lookahead_buffer_size, uint16_t search_buffer_size) {
     std::fstream file(filename, std::ios::binary | std::ios::in);
     std::vector<lz77_word> words;
@@ -95,6 +116,14 @@ std::vector<lz77_word> file_utils::readCompressedWordsFromFile(const std::string
     return words;
 }
 
+/**
+ * @brief Writes compressed LZ77 words to file.
+ *
+ * @param filename Name of input file.
+ * @param words Vector of compressed LZ77 words.
+ * @param lookahead_buffer_size Size of look-ahead buffer.
+ * @param search_buffer_size Size of search buffer.
+ */
 void file_utils::writeCompressedWordsToFile(const std::string &filename, const std::vector<lz77_word>& words, uint16_t lookahead_buffer_size, uint16_t search_buffer_size) {
 
     // Calculating size of bytes buffer

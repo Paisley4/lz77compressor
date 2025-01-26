@@ -11,6 +11,11 @@
 class logger {
 
 public:
+    /**
+     * @brief Displays message and saves it to logfile.
+     *
+     * @param msg Information we want to display and save to logfile.
+     */
     static void info(std::string msg);
 
 };
