@@ -1,0 +1,27 @@
+\doxysection{char\+\_\+utils.\+h}
+\hypertarget{char__utils_8h_source}{}\label{char__utils_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Krzysztof\ on\ 21.11.2024.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ LZ77COMPRESSOR\_CHAR\_UTILS\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LZ77COMPRESSOR\_CHAR\_UTILS\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}lz77\_word.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classchar__utils}{char\_utils}}\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classlz77__word}{lz77\_word}}\ \mbox{\hyperlink{classchar__utils_a6e24a2e6a4a140d581027375aacd043e}{findLongestString}}(\textcolor{keywordtype}{char}*\ \&tab,\ std::int64\_t\ window\_position,\ std::int64\_t\ lookahead\_buf,\ std::int64\_t\ search\_buf);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchar__utils_a94d1d6acc5c2c24d2fed48fef942da3c}{copyArray}}(std::vector<char>\ \&tab,\ std::int64\_t\ window\_position,\ std::uint64\_t\ begin,\ std::uint64\_t\ n);}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LZ77COMPRESSOR\_CHAR\_UTILS\_H}}
+
+\end{DoxyCode}

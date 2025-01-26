@@ -1,0 +1,63 @@
+\doxysection{char\+\_\+utils Class Reference}
+\hypertarget{classchar__utils}{}\label{classchar__utils}\index{char\_utils@{char\_utils}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} \mbox{\hyperlink{classchar__utils_a6e24a2e6a4a140d581027375aacd043e}{find\+Longest\+String}} (char \texorpdfstring{$\ast$}{*}\&tab, std\+::int64\+\_\+t window\+\_\+position, std\+::int64\+\_\+t lookahead\+\_\+buf, std\+::int64\+\_\+t search\+\_\+buf)
+\begin{DoxyCompactList}\small\item\em Finds longest string that repeats in look-\/ahead buffer and search buffer. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classchar__utils_a94d1d6acc5c2c24d2fed48fef942da3c}{copy\+Array}} (std\+::vector$<$ char $>$ \&tab, std\+::int64\+\_\+t window\+\_\+position, std\+::uint64\+\_\+t begin, std\+::uint64\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Copies specified length of bytes at specified window position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classchar__utils_a94d1d6acc5c2c24d2fed48fef942da3c}\index{char\_utils@{char\_utils}!copyArray@{copyArray}}
+\index{copyArray@{copyArray}!char\_utils@{char\_utils}}
+\doxysubsubsection{\texorpdfstring{copyArray()}{copyArray()}}
+{\footnotesize\ttfamily \label{classchar__utils_a94d1d6acc5c2c24d2fed48fef942da3c} 
+void char\+\_\+utils\+::copy\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ char $>$ \&}]{tab}{, }\item[{std\+::int64\+\_\+t}]{window\+\_\+position}{, }\item[{std\+::uint64\+\_\+t}]{begin}{, }\item[{std\+::uint64\+\_\+t}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Copies specified length of bytes at specified window position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & Vector of bytes. \\
+\hline
+{\em window\+\_\+position} & Position of buffer window. \\
+\hline
+{\em begin} & Position where string begins. \\
+\hline
+{\em n} & Size of string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classchar__utils_a6e24a2e6a4a140d581027375aacd043e}\index{char\_utils@{char\_utils}!findLongestString@{findLongestString}}
+\index{findLongestString@{findLongestString}!char\_utils@{char\_utils}}
+\doxysubsubsection{\texorpdfstring{findLongestString()}{findLongestString()}}
+{\footnotesize\ttfamily \label{classchar__utils_a6e24a2e6a4a140d581027375aacd043e} 
+\mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} char\+\_\+utils\+::find\+Longest\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\&}]{tab}{, }\item[{std\+::int64\+\_\+t}]{window\+\_\+position}{, }\item[{std\+::int64\+\_\+t}]{lookahead\+\_\+buf}{, }\item[{std\+::int64\+\_\+t}]{search\+\_\+buf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Finds longest string that repeats in look-\/ahead buffer and search buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & Array with all bytes. \\
+\hline
+{\em window\+\_\+position} & Position of buffer window. \\
+\hline
+{\em lookahead\+\_\+buf} & Length of look-\/ahead buffer. \\
+\hline
+{\em search\+\_\+buf} & Length of search buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Longest string in specified buffer window. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+char\+\_\+utils.\+h\item 
+char\+\_\+utils.\+cpp\end{DoxyCompactItemize}

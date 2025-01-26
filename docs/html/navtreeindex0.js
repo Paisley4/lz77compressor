@@ -1,0 +1,26 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"char__utils_8h_source.html":[1,0,0],
+"classchar__utils.html":[0,0,0],
+"classdata__utils.html":[0,0,1],
+"classes.html":[0,1],
+"classfile__utils.html":[0,0,2],
+"classlogger.html":[0,0,3],
+"classlz77.html":[0,0,4],
+"classlz77__word.html":[0,0,5],
+"classlz77__word.html#a6b9fea39ac24fe3b70398709446e031d":[0,0,5,1],
+"classlz77__word.html#a81476e89b0b0792bf9f2bda671934705":[0,0,5,2],
+"classlz77__word.html#a82fc406d3c5103a8fbc2d180bee519f1":[0,0,5,0],
+"data__utils_8h_source.html":[1,0,1],
+"file__utils_8h_source.html":[1,0,2],
+"files.html":[1,0],
+"functions.html":[0,2,0],
+"functions_func.html":[0,2,1],
+"functions_vars.html":[0,2,2],
+"index.html":[],
+"logger_8h_source.html":[1,0,3],
+"lz77_8h_source.html":[1,0,4],
+"lz77__word_8h_source.html":[1,0,5],
+"pages.html":[]
+};

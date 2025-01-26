@@ -1,0 +1,101 @@
+\doxysection{file\+\_\+utils Class Reference}
+\hypertarget{classfile__utils}{}\label{classfile__utils}\index{file\_utils@{file\_utils}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classfile__utils_a8741882dcdf0b6c9bde0961a51106550}{read\+Bytes\+From\+File}} (const std\+::string \&filename, char \texorpdfstring{$\ast$}{*}\&tab, std\+::int64\+\_\+t \&tab\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Reads bytes from file and writes it to array. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classfile__utils_acb96c142e73245fc311c97010c28d444}{write\+Bytes\+To\+File}} (const std\+::string \&filename, std\+::vector$<$ char $>$ data)
+\begin{DoxyCompactList}\small\item\em Writes vector of data to file. \end{DoxyCompactList}\item 
+static std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \mbox{\hyperlink{classfile__utils_aa2c4b470e026ef3c82d2476d638868d1}{read\+Compressed\+Words\+From\+File}} (const std\+::string \&filename, uint16\+\_\+t lookahead\+\_\+buffer\+\_\+size, uint16\+\_\+t search\+\_\+buffer\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Reads compressed LZ77 words from file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classfile__utils_a1395d526394105eac942d15a847a0f69}{write\+Compressed\+Words\+To\+File}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \&words, uint16\+\_\+t lookahead\+\_\+buffer\+\_\+size, uint16\+\_\+t search\+\_\+buffer\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Writes compressed LZ77 words to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classfile__utils_a8741882dcdf0b6c9bde0961a51106550}\index{file\_utils@{file\_utils}!readBytesFromFile@{readBytesFromFile}}
+\index{readBytesFromFile@{readBytesFromFile}!file\_utils@{file\_utils}}
+\doxysubsubsection{\texorpdfstring{readBytesFromFile()}{readBytesFromFile()}}
+{\footnotesize\ttfamily \label{classfile__utils_a8741882dcdf0b6c9bde0961a51106550} 
+void file\+\_\+utils\+::read\+Bytes\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{char \texorpdfstring{$\ast$}{*}\&}]{tab}{, }\item[{std\+::int64\+\_\+t \&}]{tab\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reads bytes from file and writes it to array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of input file. \\
+\hline
+{\em tab} & Array where bytes will be saved. \\
+\hline
+{\em tab\+\_\+size} & Variable where size of array will be saved. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classfile__utils_aa2c4b470e026ef3c82d2476d638868d1}\index{file\_utils@{file\_utils}!readCompressedWordsFromFile@{readCompressedWordsFromFile}}
+\index{readCompressedWordsFromFile@{readCompressedWordsFromFile}!file\_utils@{file\_utils}}
+\doxysubsubsection{\texorpdfstring{readCompressedWordsFromFile()}{readCompressedWordsFromFile()}}
+{\footnotesize\ttfamily \label{classfile__utils_aa2c4b470e026ef3c82d2476d638868d1} 
+std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ file\+\_\+utils\+::read\+Compressed\+Words\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{uint16\+\_\+t}]{lookahead\+\_\+buffer\+\_\+size}{, }\item[{uint16\+\_\+t}]{search\+\_\+buffer\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reads compressed LZ77 words from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of input file. \\
+\hline
+{\em lookahead\+\_\+buffer\+\_\+size} & Size of look-\/ahead buffer. \\
+\hline
+{\em search\+\_\+buffer\+\_\+size} & Size of search buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of LZ77 compressed words. 
+\end{DoxyReturn}
+\Hypertarget{classfile__utils_acb96c142e73245fc311c97010c28d444}\index{file\_utils@{file\_utils}!writeBytesToFile@{writeBytesToFile}}
+\index{writeBytesToFile@{writeBytesToFile}!file\_utils@{file\_utils}}
+\doxysubsubsection{\texorpdfstring{writeBytesToFile()}{writeBytesToFile()}}
+{\footnotesize\ttfamily \label{classfile__utils_acb96c142e73245fc311c97010c28d444} 
+void file\+\_\+utils\+::write\+Bytes\+To\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{std\+::vector$<$ char $>$}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Writes vector of data to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of output file. \\
+\hline
+{\em data} & Vector of bytes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classfile__utils_a1395d526394105eac942d15a847a0f69}\index{file\_utils@{file\_utils}!writeCompressedWordsToFile@{writeCompressedWordsToFile}}
+\index{writeCompressedWordsToFile@{writeCompressedWordsToFile}!file\_utils@{file\_utils}}
+\doxysubsubsection{\texorpdfstring{writeCompressedWordsToFile()}{writeCompressedWordsToFile()}}
+{\footnotesize\ttfamily \label{classfile__utils_a1395d526394105eac942d15a847a0f69} 
+void file\+\_\+utils\+::write\+Compressed\+Words\+To\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \&}]{words}{, }\item[{uint16\+\_\+t}]{lookahead\+\_\+buffer\+\_\+size}{, }\item[{uint16\+\_\+t}]{search\+\_\+buffer\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Writes compressed LZ77 words to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of input file. \\
+\hline
+{\em words} & Vector of compressed LZ77 words. \\
+\hline
+{\em lookahead\+\_\+buffer\+\_\+size} & Size of look-\/ahead buffer. \\
+\hline
+{\em search\+\_\+buffer\+\_\+size} & Size of search buffer. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+file\+\_\+utils.\+h\item 
+file\+\_\+utils.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,28 @@
+\doxysection{file\+\_\+utils.\+h}
+\hypertarget{file__utils_8h_source}{}\label{file__utils_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Krzysztof\ on\ 11.12.2024.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ LZ77COMPRESSOR\_FILE\_UTILS\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LZ77COMPRESSOR\_FILE\_UTILS\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}lz77\_word.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classfile__utils}{file\_utils}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfile__utils_a8741882dcdf0b6c9bde0961a51106550}{readBytesFromFile}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keywordtype}{char}*\&\ tab,\ std::int64\_t\&\ tab\_size);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfile__utils_acb96c142e73245fc311c97010c28d444}{writeBytesToFile}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ std::vector<char>\ data);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<lz77\_word>\ \mbox{\hyperlink{classfile__utils_aa2c4b470e026ef3c82d2476d638868d1}{readCompressedWordsFromFile}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ uint16\_t\ lookahead\_buffer\_size,\ uint16\_t\ search\_buffer\_size);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfile__utils_a1395d526394105eac942d15a847a0f69}{writeCompressedWordsToFile}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::vector<lz77\_word>\&\ words,\ uint16\_t\ lookahead\_buffer\_size,\ uint16\_t\ search\_buffer\_size);}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LZ77COMPRESSOR\_FILE\_UTILS\_H}}
+
+\end{DoxyCode}

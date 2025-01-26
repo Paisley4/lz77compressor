@@ -1,0 +1,62 @@
+\doxysection{lz77 Class Reference}
+\hypertarget{classlz77}{}\label{classlz77}\index{lz77@{lz77}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \mbox{\hyperlink{classlz77_a34ea3990d1ad905f41d8b0c99c007af0}{compress\+For\+Bytes}} (char \texorpdfstring{$\ast$}{*}input, std\+::int64\+\_\+t tab\+\_\+size, std\+::int64\+\_\+t lookahead\+\_\+buf, std\+::int64\+\_\+t search\+\_\+buf)
+\begin{DoxyCompactList}\small\item\em Compresses input using LZ77 algorithm. \end{DoxyCompactList}\item 
+static std\+::vector$<$ char $>$ \mbox{\hyperlink{classlz77_a9e988a8b3ff397e702295f7bc4dca662}{decompress\+For\+Bytes}} (const std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \&tab, std\+::int64\+\_\+t lookahead\+\_\+buf)
+\begin{DoxyCompactList}\small\item\em Decompresses vector of LZ77 words using LZ77 algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classlz77_a34ea3990d1ad905f41d8b0c99c007af0}\index{lz77@{lz77}!compressForBytes@{compressForBytes}}
+\index{compressForBytes@{compressForBytes}!lz77@{lz77}}
+\doxysubsubsection{\texorpdfstring{compressForBytes()}{compressForBytes()}}
+{\footnotesize\ttfamily \label{classlz77_a34ea3990d1ad905f41d8b0c99c007af0} 
+std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ lz77\+::compress\+For\+Bytes (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{std\+::int64\+\_\+t}]{tab\+\_\+size}{, }\item[{std\+::int64\+\_\+t}]{lookahead\+\_\+buf}{, }\item[{std\+::int64\+\_\+t}]{search\+\_\+buf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Compresses input using LZ77 algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Array of input file bytes. \\
+\hline
+{\em tab\+\_\+size} & Size of input array. \\
+\hline
+{\em lookahead\+\_\+buf} & Length of look-\/ahead buffer. \\
+\hline
+{\em search\+\_\+buf} & Length of search buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of compressed input. 
+\end{DoxyReturn}
+\Hypertarget{classlz77_a9e988a8b3ff397e702295f7bc4dca662}\index{lz77@{lz77}!decompressForBytes@{decompressForBytes}}
+\index{decompressForBytes@{decompressForBytes}!lz77@{lz77}}
+\doxysubsubsection{\texorpdfstring{decompressForBytes()}{decompressForBytes()}}
+{\footnotesize\ttfamily \label{classlz77_a9e988a8b3ff397e702295f7bc4dca662} 
+std\+::vector$<$ char $>$ lz77\+::decompress\+For\+Bytes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classlz77__word}{lz77\+\_\+word}} $>$ \&}]{tab}{, }\item[{std\+::int64\+\_\+t}]{lookahead\+\_\+buf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Decompresses vector of LZ77 words using LZ77 algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & Vector of compressed words. \\
+\hline
+{\em lookahead\+\_\+buf} & Length of look-\/ahead buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of decompressed bytes. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lz77.\+h\item 
+lz77.\+cpp\end{DoxyCompactItemize}
